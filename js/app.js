@@ -82,6 +82,25 @@ document
     }
   });
 
+document
+  .getElementById("calculate-total-button")
+  .addEventListener("click", function () {
+    const managerInputAmount = getInputFieldValueById("manager-input");
+    const coachInputAmount = getInputFieldValueById("coach-input");
+    if (
+      (managerInputAmount > 0 && coachInputAmount > 0) ||
+      (managerInputAmount == "number" && coachInputAmount == "number")
+    ) {
+      const playerExpenseTotal = getTextElementValueById("player-expenses");
+      const totalAmount = getTextElementValueById("total");
+      const total =
+        Number(totalAmount) +
+        Number(playerExpenseTotal) +
+        Number(managerInputAmount) +
+        Number(coachInputAmount);
+      setTextElementValueById("total", total);
+    }
+  });
 // document.getElementById('calculate-total-button').addEventListener('click', function () {
 //     const managerInputField = document.getElementById('manager-input')
 //     const managerInputAmount = managerInputField.value
